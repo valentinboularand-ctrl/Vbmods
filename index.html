@@ -14,17 +14,30 @@ body {
 }
 
 header {
-    text-align: center;
-    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-header h1 {
-    font-weight: 300;
-    letter-spacing: 8px;
+header img.logo {
+    width: 120px; /* taille du logo */
+    margin-right: 20px;
 }
 
-header p {
+header .header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+header .header-text h1 {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 4px;
+}
+
+header .header-text p {
+    margin: 0;
     opacity: 0.7;
     letter-spacing: 2px;
 }
@@ -54,7 +67,20 @@ h2 {
     flex: 1;
     min-width: 250px;
     border: 1px solid rgba(255,255,255,0.2);
-    padding: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+.model-card img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-bottom: 15px;
+}
+
+.model-card img:hover {
+    transform: scale(1.05);
 }
 
 .model-card h3 {
@@ -63,77 +89,8 @@ h2 {
 }
 
 .price {
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 18px;
-}
-
-.configurator {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
-}
-
-.visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.watch {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    background: #111;
-    border: 6px solid #444;
-    position: relative;
-    transition: 0.3s;
-}
-
-.strap {
-    position: absolute;
-    width: 80px;
-    height: 350px;
-    background: #222;
-    top: -50px;
-    left: 85px;
-    z-index: -1;
-    border-radius: 20px;
-    transition: 0.3s;
-}
-
-.controls {
-    flex: 1;
-}
-
-select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0 20px 0;
-    background: #13263a;
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3);
-}
-
-.price-box {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid white;
-    font-size: 20px;
-}
-
-button {
-    margin-top: 20px;
-    padding: 12px 30px;
-    background: transparent;
-    color: white;
-    border: 1px solid white;
-    cursor: pointer;
-}
-
-button:hover {
-    background: white;
-    color: #0b1a2a;
 }
 
 footer {
@@ -149,8 +106,11 @@ footer {
 <body>
 
 <header>
-    <h1>VB MODS</h1>
-    <p>Montres Automatiques Assemblées à la Commande</p>
+    <img src="images/IMG_9113.jpeg" alt="Logo VB Mods" class="logo">
+    <div class="header-text">
+        <h1>VB MODS</h1>
+        <p>Montres Automatiques Assemblées à la Commande</p>
+    </div>
 </header>
 
 <section>
@@ -159,6 +119,9 @@ footer {
     <div class="models">
 
         <div class="model-card">
+            <a href="diver.html">
+                <img src="images/montre_diver.jpg" alt="Diver Transparente">
+            </a>
             <h3>Diver Transparente</h3>
             <p>Boîtier et lunette transparents, design moderne et épuré.</p>
             <p>24 rubis – Stop seconde – 41h de réserve de marche</p>
@@ -166,6 +129,9 @@ footer {
         </div>
 
         <div class="model-card">
+            <a href="skeleton.html">
+                <img src="images/montre_skeleton.jpg" alt="Skeleton Fumée">
+            </a>
             <h3>Skeleton Fumée</h3>
             <p>Architecture ouverte, finition gris fumé, fond transparent.</p>
             <p>24 rubis – Remontage automatique & manuel</p>
@@ -175,94 +141,9 @@ footer {
     </div>
 </section>
 
-<section>
-    <h2>Configurateur</h2>
-
-    <div class="configurator">
-
-        <div class="visual">
-            <div class="strap" id="strapVisual"></div>
-            <div class="watch" id="watchVisual"></div>
-        </div>
-
-        <div class="controls">
-
-            <label>Modèle :</label>
-            <select id="model" onchange="updateConfig()">
-                <option value="229">Diver Transparente - 229€</option>
-                <option value="249">Skeleton Fumée - 249€</option>
-            </select>
-
-            <label>Couleur cadran :</label>
-            <select id="color" onchange="updateConfig()">
-                <option value="0" data-color="#111">Noir</option>
-                <option value="20" data-color="#1f3a5f">Bleu</option>
-                <option value="20" data-color="#1f5f3a">Vert</option>
-                <option value="30" data-color="#444">Gris fumé</option>
-            </select>
-
-            <label>Bracelet :</label>
-            <select id="strap" onchange="updateConfig()">
-                <option value="0" data-strap="#222">Silicone noir</option>
-                <option value="30" data-strap="#888">Acier</option>
-                <option value="40" data-strap="#000">Caoutchouc premium</option>
-            </select>
-
-            <div class="price-box">
-                Prix total : <span id="price">229</span> €
-                <br><br>
-                Délai estimé : 4 semaines
-            </div>
-
-            <button onclick="sendOrder()">Demander cette configuration</button>
-
-        </div>
-
-    </div>
-</section>
-
-<section>
-    <h2>Personnalisation</h2>
-    <p>
-    Chaque montre est assemblée à la commande.
-    Versions transparentes, skeleton, différentes couleurs et configurations spécifiques sur demande.
-    Délai moyen de fabrication : environ 4 semaines.
-    </p>
-</section>
-
-<section>
-    <h2>À Propos</h2>
-    <p>
-    VB Mods est un atelier indépendant basé à Bordeaux.
-    Chaque pièce est assemblée avec soin, testée et garantie 6 mois.
-    Montres modifiées, non affiliées aux marques pouvant apparaître sur certains cadrans.
-    </p>
-</section>
-
 <footer>
 © 2026 VB Mods – Tous droits réservés
 </footer>
-
-<script>
-function updateConfig() {
-    let model = parseInt(document.getElementById("model").value);
-    let colorSelect = document.getElementById("color");
-    let strapSelect = document.getElementById("strap");
-
-    let total = model + parseInt(colorSelect.value) + parseInt(strapSelect.value);
-    document.getElementById("price").innerText = total;
-
-    document.getElementById("watchVisual").style.background =
-        colorSelect.options[colorSelect.selectedIndex].getAttribute("data-color");
-
-    document.getElementById("strapVisual").style.background =
-        strapSelect.options[strapSelect.selectedIndex].getAttribute("data-strap");
-}
-
-function sendOrder() {
-    alert("Fonction de demande à connecter à votre email ou système de paiement.");
-}
-</script>
 
 </body>
 </html>
