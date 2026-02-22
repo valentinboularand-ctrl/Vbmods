@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VB Mods | Montres Automatiques</title>
 
+<!-- Police moderne et élégante -->
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     background-color: #0b1a2a;
     color: white;
 }
@@ -16,30 +19,39 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding: 20px 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    justify-content: center;
+    position: relative;
+    min-height: 250px;
+    background-color: #0b1a2a;
 }
 
 header img.logo {
-    width: 120px; /* taille du logo */
-    margin-right: 20px;
+    width: 120px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(11,26,42,0.6);
 }
 
 header .header-text {
-    display: flex;
-    flex-direction: column;
+    text-align: center;
 }
 
 header .header-text h1 {
     margin: 0;
-    font-weight: 300;
-    letter-spacing: 4px;
+    font-weight: 500;
+    font-size: 48px;
+    letter-spacing: 6px;
 }
 
 header .header-text p {
-    margin: 0;
-    opacity: 0.7;
+    margin: 10px 0 0 0;
+    font-weight: 300;
     letter-spacing: 2px;
+    opacity: 0.8;
+    font-size: 18px;
 }
 
 section {
@@ -69,18 +81,23 @@ h2 {
     border: 1px solid rgba(255,255,255,0.2);
     padding: 20px;
     text-align: center;
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
 }
 
 .model-card img {
     width: 100%;
+    max-height: 250px; /* même hauteur pour toutes les montres */
+    object-fit: cover; /* garde le ratio mais remplit la zone */
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     margin-bottom: 15px;
 }
 
 .model-card img:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
 .model-card h3 {
